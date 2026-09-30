@@ -1,0 +1,245 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * SAMRAJ PRE SCHOOL design system.
+ * Navy display typography, coral CTAs, golden accents, soft pastel supports.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+  --radius-4xl: calc(var(--radius) + 32px);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* brand palette */
+  --color-navy: var(--navy);
+  --color-coral: var(--coral);
+  --color-coral-soft: var(--coral-soft);
+  --color-sun: var(--sun);
+  --color-sun-soft: var(--sun-soft);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+  --color-mint: var(--mint);
+  --color-mint-soft: var(--mint-soft);
+  --color-blossom: var(--blossom);
+  --color-blossom-soft: var(--blossom-soft);
+  --color-cream: var(--cream);
+  --color-lilac-soft: var(--lilac-soft);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --navy: oklch(0.36 0.099 259);
+  --coral: oklch(0.615 0.206 27.5);
+  --coral-soft: oklch(0.945 0.031 24);
+  --sun: oklch(0.812 0.152 84);
+  --sun-soft: oklch(0.965 0.045 92);
+  --sky: oklch(0.76 0.111 233);
+  --sky-soft: oklch(0.963 0.027 233);
+  --mint: oklch(0.775 0.123 161);
+  --mint-soft: oklch(0.963 0.031 161);
+  --blossom: oklch(0.79 0.104 3);
+  --blossom-soft: oklch(0.959 0.024 3);
+  --lilac-soft: oklch(0.955 0.026 300);
+  --cream: oklch(0.988 0.014 92);
+
+  --background: oklch(0.995 0.005 95);
+  --foreground: oklch(0.36 0.099 259);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.36 0.099 259);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.36 0.099 259);
+  --primary: oklch(0.36 0.099 259);
+  --primary-foreground: oklch(0.99 0.005 95);
+  --secondary: oklch(0.963 0.027 233);
+  --secondary-foreground: oklch(0.36 0.099 259);
+  --muted: oklch(0.97 0.011 95);
+  --muted-foreground: oklch(0.55 0.036 259);
+  --accent: oklch(0.965 0.045 92);
+  --accent-foreground: oklch(0.36 0.099 259);
+  --destructive: oklch(0.615 0.206 27.5);
+  --destructive-foreground: oklch(0.99 0.005 95);
+  --border: oklch(0.923 0.014 250);
+  --input: oklch(0.923 0.014 250);
+  --ring: oklch(0.615 0.206 27.5);
+
+  --shadow-soft: 0 10px 30px -12px oklch(0.36 0.099 259 / 0.18);
+  --shadow-lift: 0 22px 48px -20px oklch(0.36 0.099 259 / 0.28);
+  --gradient-sky: linear-gradient(
+    180deg,
+    oklch(0.975 0.021 233) 0%,
+    oklch(0.995 0.008 95) 100%
+  );
+  --gradient-warm: linear-gradient(
+    135deg,
+    oklch(0.968 0.04 92) 0%,
+    oklch(0.962 0.024 3) 100%
+  );
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-navy);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 3px;
+  }
+}
+
+@utility surface-card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility bg-gradient-sky {
+  background-image: var(--gradient-sky);
+}
+
+@utility bg-gradient-warm {
+  background-image: var(--gradient-warm);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@utility btn-coral {
+  background-color: var(--color-coral);
+  color: var(--color-primary-foreground);
+  box-shadow: 0 12px 24px -12px var(--color-coral);
+}
+
+@utility btn-outline-coral {
+  background-color: var(--color-card);
+  color: var(--color-coral);
+  border: 2px solid var(--color-coral);
+}
+
+@utility btn-sun {
+  background-color: var(--color-sun);
+  color: var(--color-navy);
+  box-shadow: 0 12px 24px -12px var(--color-sun);
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@utility float-slow {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+@keyframes reveal-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
